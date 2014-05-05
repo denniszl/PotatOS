@@ -1,0 +1,38 @@
+boot.o: boot.S multiboot.h x86_desc.h types.h
+syscall_s.o: syscall_s.S syscall_s.h x86_desc.h types.h
+x86_desc.o: x86_desc.S x86_desc.h types.h syscall_s.h
+exceptions.o: exceptions.c exceptions.h lib.h types.h extralib.h \
+  syscall.h x86_desc.h filesys.h multiboot.h terminal.h key_init.h \
+  i8259.h mathlib.h rtc.h paging.h
+extralib.o: extralib.c extralib.h lib.h types.h
+filesys.o: filesys.c filesys.h lib.h types.h extralib.h multiboot.h \
+  terminal.h key_init.h i8259.h mathlib.h syscall.h x86_desc.h paging.h \
+  rtc.h
+i8259.o: i8259.c i8259.h types.h lib.h extralib.h
+kernel.o: kernel.c multiboot.h types.h x86_desc.h lib.h extralib.h \
+  i8259.h debug.h exceptions.h syscall.h filesys.h terminal.h key_init.h \
+  mathlib.h rtc.h paging.h PIT.h schedule.h pcSound.h syscall_s.h
+key_init.o: key_init.c key_init.h i8259.h types.h lib.h extralib.h \
+  mathlib.h syscall.h x86_desc.h filesys.h multiboot.h terminal.h rtc.h \
+  paging.h
+lib.o: lib.c lib.h types.h extralib.h
+mathlib.o: mathlib.c mathlib.h lib.h types.h extralib.h
+paging.o: paging.c paging.h x86_desc.h types.h lib.h extralib.h syscall.h \
+  filesys.h multiboot.h terminal.h key_init.h i8259.h mathlib.h rtc.h
+pcSound.o: pcSound.c pcSound.h i8259.h types.h lib.h extralib.h \
+  x86_desc.h syscall.h filesys.h multiboot.h terminal.h key_init.h \
+  mathlib.h rtc.h paging.h PIT.h schedule.h
+PIT.o: PIT.c PIT.h i8259.h types.h lib.h extralib.h x86_desc.h syscall.h \
+  filesys.h multiboot.h terminal.h key_init.h mathlib.h rtc.h paging.h \
+  schedule.h
+rtc.o: rtc.c rtc.h i8259.h types.h lib.h extralib.h x86_desc.h filesys.h \
+  multiboot.h terminal.h key_init.h mathlib.h syscall.h paging.h
+schedule.o: schedule.c schedule.h syscall.h lib.h types.h extralib.h \
+  x86_desc.h filesys.h multiboot.h terminal.h key_init.h i8259.h \
+  mathlib.h rtc.h paging.h
+syscall.o: syscall.c syscall.h lib.h types.h extralib.h x86_desc.h \
+  filesys.h multiboot.h terminal.h key_init.h i8259.h mathlib.h rtc.h \
+  paging.h
+terminal.o: terminal.c terminal.h key_init.h i8259.h types.h lib.h \
+  extralib.h mathlib.h syscall.h x86_desc.h filesys.h multiboot.h rtc.h \
+  paging.h
